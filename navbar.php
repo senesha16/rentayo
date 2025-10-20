@@ -65,30 +65,21 @@ if (!empty($_SESSION["ID"])) {
 
 /* Main Navbar Container */
 .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 5000;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #6366f1 100%);
-    color: #fff;
-    padding: 12px 24px;
-  /* use inner wrapper for layout + width constraint */
-  display: block;
-    box-shadow: 
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-    flex-wrap: nowrap;
-}
-
-/* Constrain header content width and keep it centered */
-.navbar-inner {
-  width: 100%;
-  max-width: 1100px; /* match main content width */
-  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #6366f1 100%);
+  color: #fff;
+  padding: 8px 16px; /* reduced header padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+  flex-wrap: nowrap;
 }
 
 /* Navbar Sections */
@@ -132,7 +123,7 @@ if (!empty($_SESSION["ID"])) {
     transform: scale(1.05);
 }
 
-.logo-img { height: 100px; width: auto; display: block; }
+.logo-img { height: 72px; width: auto; display: block; } /* reduced logo height to shrink header */
 
 /* ═══════════════════════════════════════════════════════════════
    SEARCH BAR
@@ -149,15 +140,15 @@ if (!empty($_SESSION["ID"])) {
 }
 
 .search-container input[type="text"] {
-    width: 100%;
-    height: 42px;
-    padding: 10px 18px;
+  width: 100%;
+  height: 38px; /* slightly shorter input */
+  padding: 8px 14px;
     border-radius: 12px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     color: #fff;
-    font-size: 15px;
+  font-size: 14px;
     font-weight: 400;
     transition: all 0.3s ease;
     outline: none;
@@ -189,8 +180,8 @@ if (!empty($_SESSION["ID"])) {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
+  width: 36px !important; /* reduced control size */
+  height: 36px !important; /* reduced control size */
     padding: 0;
     border-radius: 10px;
     text-decoration: none;
@@ -199,7 +190,7 @@ if (!empty($_SESSION["ID"])) {
     border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: all 0.2s ease;
-    flex: 0 0 40px;
+  flex: 0 0 36px;
     visibility: visible !important;
     opacity: 1 !important;
 }
@@ -271,10 +262,10 @@ if (!empty($_SESSION["ID"])) {
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff !important;
     cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    height: 40px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  height: 36px; /* match reduced control size */
 }
 
 .profile-btn:hover {
@@ -609,7 +600,6 @@ if (!empty($_SESSION["ID"])) {
 </style>
 
 <div class="navbar">
-  <div class="navbar-inner">
   <div class="left">
     <div class="logo">
       <a href="index.php" class="logo-link">
@@ -740,7 +730,6 @@ if (!empty($_SESSION["ID"])) {
         </a>
       </div>
     </div>
-  </div>
   </div>
 </div>
 
