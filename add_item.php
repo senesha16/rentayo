@@ -1,3 +1,33 @@
+<?php
+// Initialize session and DB so navbar and this page can query
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+require_once __DIR__ . '/connections.php';
+require_once __DIR__ . '/ban_guard.php';
+
+// Optional: require login to add items
+if (empty($_SESSION['ID'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Fetch categories from DB (case-sensitive names on Linux)
+$categories = [];
+if (isset($connections) && $connections) {
+    $res = @mysqli_query($connections, "SELECT category_id, name FROM categories ORDER BY name ASC");
+    if ($res) {
+        while ($row = mysqli_fetch_assoc($res)) { $categories[] = $row; }
+        mysqli_free_result($res);
+    } else {
+        error_log('add_item.php: categories query failed: ' . mysqli_error($connections));
+    }
+} else {
+    error_log('add_item.php: No DB connection available.');
+}
+
+// Preserve selected categories if the page re-renders after validation errors
+$selectedCategories = isset($_POST['categories']) && is_array($_POST['categories'])
+    ? array_map('intval', $_POST['categories']) : [];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,22 +244,22 @@
                         Categories <span class="text-red-500">*</span>
                     </label>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        <!-- <?php foreach($categories as $cat): ?> -->
-                        <label class="flex items-center gap-3 p-4 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-sky-500 hover:bg-sky-50 transition-all group">
-                            <input type="checkbox" name="categories[]" value="1" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-                            <span class="font-medium text-gray-700 group-hover:text-sky-600">Electronics</span>
-                        </label>
-                        
-                        <label class="flex items-center gap-3 p-4 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-sky-500 hover:bg-sky-50 transition-all group">
-                            <input type="checkbox" name="categories[]" value="2" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-                            <span class="font-medium text-gray-700 group-hover:text-sky-600">Books</span>
-                        </label>
-                        
-                        <label class="flex items-center gap-3 p-4 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-sky-500 hover:bg-sky-50 transition-all group">
-                            <input type="checkbox" name="categories[]" value="3" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-                            <span class="font-medium text-gray-700 group-hover:text-sky-600">Sports</span>
-                        </label>
-                        <!-- <?php endforeach; ?> -->
+                        <?php if (!empty($categories)): ?>
+                            <?php foreach ($categories as $cat): ?>
+                                <?php 
+                                    $cid = (int)$cat['category_id'];
+                                    $checked = in_array($cid, $selectedCategories, true) ? 'checked' : '';
+                                ?>
+                                <label class="flex items-center gap-3 p-4 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-sky-500 hover:bg-sky-50 transition-all group">
+                                    <input type="checkbox" name="categories[]" value="<?php echo $cid; ?>" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500" <?php echo $checked; ?>>
+                                    <span class="font-medium text-gray-700 group-hover:text-sky-600"><?php echo htmlspecialchars($cat['name']); ?></span>
+                                </label>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="col-span-full p-4 bg-amber-50 border-2 border-amber-200 rounded-xl text-amber-800">
+                                No categories available. Please import data or add categories in the database.
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
