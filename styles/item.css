@@ -1320,7 +1320,7 @@
     position: absolute;
     top: 16px;
     right: 16px;
-    z-index: 10;
+    z-index: 10000; /* ensure edit button stays on top of overlays */
 }
 
 .item-detail-card .edit-btn {
