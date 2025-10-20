@@ -16,17 +16,20 @@ if (!$item_id) {
     exit;
 }
 
-// Fetch item details
-$query = "SELECT i.*, GROUP_CONCAT(c.name SEPARATOR ', ') as categories, u.username as lender_username 
-          FROM Items i 
-          LEFT JOIN ItemCategories ic ON i.item_id = ic.item_id 
-          LEFT JOIN Categories c ON ic.category_id = c.category_id 
-          LEFT JOIN Users u ON i.lender_id = u.id 
+// Fetch item details (use lowercase tables; Linux is case-sensitive)
+$query = "SELECT i.*, COALESCE(GROUP_CONCAT(DISTINCT c.name ORDER BY c.name SEPARATOR ', '), '') AS categories, u.username AS lender_username 
+          FROM items i 
+          LEFT JOIN itemcategories ic ON ic.item_id = i.item_id 
+          LEFT JOIN categories c ON c.category_id = ic.category_id 
+          LEFT JOIN users u ON u.ID = i.lender_id 
           WHERE i.item_id = " . intval($item_id) . " 
           GROUP BY i.item_id";
 
 $result = mysqli_query($connections, $query);
 
+if (!$result) {
+    error_log('item_details.php: Item query failed: ' . mysqli_error($connections) . ' | SQL: ' . $query);
+}
 if (!$result || mysqli_num_rows($result) == 0) {
     header("Location: index.php");
     exit;
@@ -50,28 +53,25 @@ if ($imageTableCheck && mysqli_num_rows($imageTableCheck) > 0) {
     
     if ($imageResult && mysqli_num_rows($imageResult) > 0) {
         while ($img = mysqli_fetch_assoc($imageResult)) {
-            if (file_exists($img['image_url'])) {
-                $images[] = $img['image_url'];
-            }
+            // Push web path directly; browser will handle if missing
+            $images[] = $img['image_url'];
         }
     }
 }
 
 // Always add main image_url as fallback/primary if no images found in item_images table
 // or if the main image isn't already in the images array
-if (!empty($item['image_url']) && file_exists($item['image_url'])) {
+if (!empty($item['image_url'])) {
     if (empty($images) || !in_array($item['image_url'], $images)) {
-        // If we have images from item_images table, prepend the main image
-        // If we don't have images, this becomes the only image
         array_unshift($images, $item['image_url']);
     }
 }
 
 // Fetch other items from the same lender (excluding current item)
-$otherItemsQuery = "SELECT i.*, GROUP_CONCAT(c.name SEPARATOR ', ') as categories 
-                    FROM Items i 
-                    LEFT JOIN ItemCategories ic ON i.item_id = ic.item_id 
-                    LEFT JOIN Categories c ON ic.category_id = c.category_id 
+$otherItemsQuery = "SELECT i.*, COALESCE(GROUP_CONCAT(DISTINCT c.name ORDER BY c.name SEPARATOR ', '), '') AS categories 
+                    FROM items i 
+                    LEFT JOIN itemcategories ic ON ic.item_id = i.item_id 
+                    LEFT JOIN categories c ON c.category_id = ic.category_id 
                     WHERE i.lender_id = " . intval($item['lender_id']) . " 
                     AND i.item_id != " . intval($item_id) . " 
                     GROUP BY i.item_id 
@@ -525,7 +525,7 @@ $gcash_available = $lender_gcash_number !== '';
                 <?php foreach ($otherItems as $otherItem): ?>
                     <div class="other-item-card" onclick="window.location.href='item_details.php?item_id=<?php echo $otherItem['item_id']; ?>'">
                         <div class="other-item-image">
-                            <?php if (!empty($otherItem['image_url']) && file_exists($otherItem['image_url'])): ?>
+                            <?php if (!empty($otherItem['image_url'])): ?>
                                 <img src="<?php echo htmlspecialchars($otherItem['image_url']); ?>" 
                                      alt="<?php echo htmlspecialchars($otherItem['title']); ?>" 
                                      loading="lazy">
