@@ -71,15 +71,24 @@ if (!empty($_SESSION["ID"])) {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #6366f1 100%);
     color: #fff;
     padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+  /* use inner wrapper for layout + width constraint */
+  display: block;
     box-shadow: 
         0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
     flex-wrap: nowrap;
+}
+
+/* Constrain header content width and keep it centered */
+.navbar-inner {
+  width: 100%;
+  max-width: 1100px; /* match main content width */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 /* Navbar Sections */
@@ -600,6 +609,7 @@ if (!empty($_SESSION["ID"])) {
 </style>
 
 <div class="navbar">
+  <div class="navbar-inner">
   <div class="left">
     <div class="logo">
       <a href="index.php" class="logo-link">
@@ -730,6 +740,7 @@ if (!empty($_SESSION["ID"])) {
         </a>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
