@@ -108,7 +108,12 @@ if ($items_res === false) {
         /* Sidebar + layout (categories removed from UI) */
         .sidebar { position: fixed; left:0; top:0; height:100%; width:280px; background:#fff; box-shadow:0 20px 25px rgba(0,0,0,0.08); transform:translateX(-100%); transition:transform .3s ease; z-index:40; border-right:2px solid #e0f2fe; }
         .sidebar.open { transform: translateX(0); }
-        @media(min-width:1024px){ .sidebar { transform: translateX(0); } .main { margin-left:280px; } }
+        @media(min-width:1024px){
+            .sidebar { transform: translateX(0); }
+            .main { margin-left:280px; }
+            /* Align footer with main content when sidebar is visible */
+            .site-footer { margin-left:280px; width: calc(100% - 280px); }
+        }
         .main { transition: margin-left .3s ease; }
         .main.shifted { margin-left:280px; }
         .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:30; }
