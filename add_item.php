@@ -27,6 +27,158 @@ if (isset($connections) && $connections) {
 // Preserve selected categories if the page re-renders after validation errors
 $selectedCategories = isset($_POST['categories']) && is_array($_POST['categories'])
     ? array_map('intval', $_POST['categories']) : [];
+
+// Feedback messages for the UI
+$error = '';
+$success = '';
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Basic validation
+    $title = trim($_POST['title'] ?? '');
+    $description = trim($_POST['description'] ?? '');
+    $price = (float)($_POST['price_per_day'] ?? 0);
+    $quantity = (int)($_POST['quantity'] ?? 0);
+    $lenderId = (int)($_SESSION['ID'] ?? 0);
+
+    if ($title === '' || $description === '') {
+        $error = 'Please provide a title and description.';
+    } elseif ($price <= 0) {
+        $error = 'Price must be greater than 0.';
+    } elseif ($quantity < 1) {
+        $error = 'Quantity must be at least 1.';
+    } elseif (empty($selectedCategories)) {
+        $error = 'Please select at least one category.';
+    } elseif (!$lenderId) {
+        $error = 'You must be logged in to add an item.';
+    }
+
+    // Proceed if no validation errors
+    if ($error === '' && isset($connections) && $connections) {
+        // Detect optional columns/tables for portability
+        $itemCols = [];
+        if ($colRes = @mysqli_query($connections, "SHOW COLUMNS FROM items")) {
+            while ($r = mysqli_fetch_assoc($colRes)) { $itemCols[] = $r['Field']; }
+            mysqli_free_result($colRes);
+        }
+        $hasAvailCount = in_array('available_items_count', $itemCols, true);
+        $hasIsAvailable = in_array('is_available', $itemCols, true);
+        $hasImageUrl = in_array('image_url', $itemCols, true);
+        $hasStatus = in_array('status', $itemCols, true);
+
+        // Table presence checks
+        $hasItemImages = false;
+        if ($tRes = @mysqli_query($connections, "SHOW TABLES LIKE 'item_images'")) {
+            $hasItemImages = mysqli_num_rows($tRes) > 0; mysqli_free_result($tRes);
+        }
+        $hasItemCategories = false;
+        if ($tRes = @mysqli_query($connections, "SHOW TABLES LIKE 'itemcategories'")) {
+            $hasItemCategories = mysqli_num_rows($tRes) > 0; mysqli_free_result($tRes);
+        }
+
+        // Handle image uploads (take first as main image)
+        $savedImages = [];
+        if (!empty($_FILES['item_images']) && is_array($_FILES['item_images']['name'])) {
+            $uploadDir = __DIR__ . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'items';
+            if (!is_dir($uploadDir)) { @mkdir($uploadDir, 0775, true); }
+
+            $names = $_FILES['item_images']['name'];
+            $tmps  = $_FILES['item_images']['tmp_name'];
+            $errs  = $_FILES['item_images']['error'];
+
+            for ($i = 0; $i < count($names); $i++) {
+                if (!isset($tmps[$i]) || (int)$errs[$i] !== UPLOAD_ERR_OK) continue;
+                if (!is_uploaded_file($tmps[$i])) continue;
+
+                $ext = strtolower(pathinfo($names[$i], PATHINFO_EXTENSION));
+                if (!in_array($ext, ['jpg','jpeg','png','gif','webp'])) { continue; }
+
+                $newName = 'item_' . uniqid('', true) . '.' . $ext;
+                $destFs = $uploadDir . DIRECTORY_SEPARATOR . $newName;
+                $destWeb = 'uploads/items/' . $newName; // web path
+                if (@move_uploaded_file($tmps[$i], $destFs)) {
+                    $savedImages[] = $destWeb;
+                }
+                if (count($savedImages) >= 5) break; // limit
+            }
+        }
+
+        $mainImage = $savedImages[0] ?? '';
+
+        // Transaction: insert item, images (optional), categories
+        @mysqli_begin_transaction($connections);
+        $ok = true; $itemId = null;
+
+        // Build dynamic insert for items
+        $cols = ['lender_id','title','description','price_per_day'];
+        $vals = ['i','s','s','d'];
+        $data = [$lenderId, $title, $description, $price];
+        if ($hasAvailCount) { $cols[] = 'available_items_count'; $vals[] = 'i'; $data[] = $quantity; }
+        if ($hasIsAvailable) { $cols[] = 'is_available'; $vals[] = 'i'; $data[] = 1; }
+        if ($hasImageUrl) { $cols[] = 'image_url'; $vals[] = 's'; $data[] = $mainImage; }
+        if ($hasStatus) { $cols[] = 'status'; $vals[] = 's'; $data[] = 'approved'; }
+
+        $placeholders = '(' . implode(',', array_fill(0, count($cols), '?')) . ')';
+        $sql = 'INSERT INTO items (' . implode(',', $cols) . ') VALUES ' . $placeholders;
+
+        $stmt = @mysqli_prepare($connections, $sql);
+        if ($stmt) {
+            $types = implode('', $vals);
+            // bind_param requires references
+            $bindParams = [$stmt, $types];
+            foreach ($data as $k => $v) { $bindParams[] = &$data[$k]; }
+            call_user_func_array('mysqli_stmt_bind_param', $bindParams);
+            if (!@mysqli_stmt_execute($stmt)) {
+                $ok = false; $error = 'Failed to save item. ' . mysqli_stmt_error($stmt);
+            }
+            @mysqli_stmt_close($stmt);
+            if ($ok) { $itemId = mysqli_insert_id($connections); }
+        } else {
+            $ok = false; $error = 'Failed to prepare item insert.';
+        }
+
+        // Insert extra images into item_images if table exists
+        if ($ok && $hasItemImages && !empty($savedImages)) {
+            $imgSql = 'INSERT INTO item_images (item_id, image_url, is_primary, sort_order) VALUES (?, ?, ?, ?)';
+            $imgStmt = @mysqli_prepare($connections, $imgSql);
+            if ($imgStmt) {
+                foreach ($savedImages as $idx => $imgPath) {
+                    $isPrimary = ($idx === 0) ? 1 : 0;
+                    $sort = $idx;
+                    @mysqli_stmt_bind_param($imgStmt, 'isii', $itemId, $imgPath, $isPrimary, $sort);
+                    if (!@mysqli_stmt_execute($imgStmt)) { $ok = false; $error = 'Failed to save images. ' . mysqli_stmt_error($imgStmt); break; }
+                }
+                @mysqli_stmt_close($imgStmt);
+            }
+        }
+
+        // Insert categories into join table
+        if ($ok && $hasItemCategories && $itemId && !empty($selectedCategories)) {
+            $catSql = 'INSERT INTO itemcategories (item_id, category_id) VALUES (?, ?)';
+            $catStmt = @mysqli_prepare($connections, $catSql);
+            if ($catStmt) {
+                foreach ($selectedCategories as $cid) {
+                    $cid = (int)$cid; if ($cid <= 0) continue;
+                    @mysqli_stmt_bind_param($catStmt, 'ii', $itemId, $cid);
+                    if (!@mysqli_stmt_execute($catStmt)) { $ok = false; $error = 'Failed to save categories. ' . mysqli_stmt_error($catStmt); break; }
+                }
+                @mysqli_stmt_close($catStmt);
+            }
+        }
+
+        if ($ok) {
+            @mysqli_commit($connections);
+            $success = 'Item added successfully!';
+            // Reset form selections
+            $selectedCategories = [];
+        } else {
+            @mysqli_rollback($connections);
+            if ($error === '') { $error = 'An unexpected error occurred while saving the item.'; }
+        }
+    } elseif ($error === '') {
+        $error = 'Database connection is not available.';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
