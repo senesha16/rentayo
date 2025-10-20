@@ -123,7 +123,7 @@ if (!empty($_SESSION["ID"])) {
     transform: scale(1.05);
 }
 
-.logo-img { height: 56px; width: auto; display: block; }
+.logo-img { height: 100px; width: auto; display: block; }
 
 /* ═══════════════════════════════════════════════════════════════
    SEARCH BAR
@@ -522,7 +522,7 @@ if (!empty($_SESSION["ID"])) {
         gap: 12px;
     }
 
-  .logo-img { height: 48px; }
+  .logo-img { height: 72px; }
 
     .search-container {
         max-width: 100%;
@@ -561,7 +561,7 @@ if (!empty($_SESSION["ID"])) {
     }
 
     /* Hide labels on mobile, keep icons */
-  .logo-img { height: 40px; }
+  .logo-img { height: 56px; }
 
     .search-container input[type="text"] {
         font-size: 13px;
