@@ -131,6 +131,12 @@ if ($items_res === false) {
         }
         .sidebar .category-link:hover { transform: translateY(-2px); background: #e6f7ff; }
 
+        /* Active category */
+        .sidebar .category-link.active {
+            background: #e6f7ff;
+            color: #0f172a;
+        }
+
         /* Bigger categories heading (noticeable but balanced) */
         .sidebar .categories-heading {
             font-size: 1.125rem; /* ~18px */
@@ -165,7 +171,7 @@ if ($items_res === false) {
             </div>
 
             <div class="flex-1 p-4">
-                <a href="index.php" class="flex items-center gap-3 px-4 py-3 rounded-xl mb-2 bg-gradient-to-r from-sky-500 to-cyan-600 text-white shadow-lg">
+                <a href="index.php" class="flex items-center gap-3 px-4 py-3 rounded-xl mb-2 <?php echo $categoryFilter ? 'bg-white text-gray-700 border-2 border-sky-100 hover:bg-sky-50' : 'bg-gradient-to-r from-sky-500 to-cyan-600 text-white shadow-lg'; ?>">
                     <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                         <i data-lucide="layers" class="w-4 h-4 text-white"></i>
                     </div>
@@ -176,7 +182,8 @@ if ($items_res === false) {
                 <?php if ($categories && mysqli_num_rows($categories) > 0): ?>
                     <div class="mt-4">
                         <?php while ($category = mysqli_fetch_assoc($categories)): ?>
-                            <a href="index.php?category=<?php echo $category['category_id']; ?>" class="category-link text-gray-900 hover:bg-sky-100 transition-colors">
+                            <?php $isActive = ((int)$category['category_id'] === (int)$categoryFilter); ?>
+                            <a href="index.php?category=<?php echo (int)$category['category_id']; ?>" class="category-link text-gray-900 hover:bg-sky-100 transition-colors <?php echo $isActive ? 'active' : ''; ?>">
                                 <?php echo htmlspecialchars($category['name']); ?>
                             </a>
                         <?php endwhile; ?>
