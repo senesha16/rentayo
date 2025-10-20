@@ -6,6 +6,7 @@
   background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #06b6d4 100%);
   color: white;
   overflow: hidden;
+  padding: 0; /* keep outer padding minimal; use inner container instead */
 }
 
 /* Decorative background elements */
@@ -38,14 +39,14 @@
   z-index: 10;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 0.75rem 1rem; /* small top/bottom and side padding */
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  gap: 0.75rem; /* smaller spacing */
+  margin-bottom: 0.75rem; /* smaller bottom spacing */
 }
 
 @media (min-width: 768px) {
@@ -128,10 +129,10 @@
 }
 
 .site-footer-bottom .site-footer-inner {
-  padding: 1.5rem;
+  padding: 0.5rem 0.75rem; /* compact bottom bar */
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
 }
