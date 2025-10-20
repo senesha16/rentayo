@@ -107,8 +107,8 @@ if (!empty($_SESSION["ID"])) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   LOGO
-   ═══════════════════════════════════════════════════════════ */
+  LOGO
+  ═══════════════════════════════════════════════════════════ */
 
 .logo-link {
     display: inline-flex;
@@ -123,15 +123,7 @@ if (!empty($_SESSION["ID"])) {
     transform: scale(1.05);
 }
 
-.logo-text {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.9));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+.logo-img { height: 30px; width: auto; display: block; }
 
 /* ═══════════════════════════════════════════════════════════════
    SEARCH BAR
@@ -530,9 +522,7 @@ if (!empty($_SESSION["ID"])) {
         gap: 12px;
     }
 
-    .logo-text {
-        font-size: 20px;
-    }
+  .logo-img { height: 26px; }
 
     .search-container {
         max-width: 100%;
@@ -571,9 +561,7 @@ if (!empty($_SESSION["ID"])) {
     }
 
     /* Hide labels on mobile, keep icons */
-    .logo-text {
-        font-size: 18px;
-    }
+  .logo-img { height: 22px; }
 
     .search-container input[type="text"] {
         font-size: 13px;
@@ -615,7 +603,7 @@ if (!empty($_SESSION["ID"])) {
   <div class="left">
     <div class="logo">
       <a href="index.php" class="logo-link">
-        <span class="logo-text">RENTayo</span>
+        <img src="rentayo_logo.png" alt="RENTayo" class="logo-img" />
       </a>
     </div>
   </div>

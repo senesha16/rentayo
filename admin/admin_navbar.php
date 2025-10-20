@@ -84,15 +84,7 @@ $on_dashboard = (basename($_SERVER['PHP_SELF']) === 'index.php');
   backdrop-filter: blur(10px);
 }
 
-.logo-text {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+.logo-img { height: 26px; width: auto; display:block; }
 
 .navbar-right {
   display: flex;
@@ -177,9 +169,7 @@ $on_dashboard = (basename($_SERVER['PHP_SELF']) === 'index.php');
     padding: 12px 16px;
   }
 
-  .logo-text {
-    font-size: 16px;
-  }
+  .logo-img { height: 22px; }
 
   .logo-icon {
     width: 32px;
@@ -211,7 +201,7 @@ $on_dashboard = (basename($_SERVER['PHP_SELF']) === 'index.php');
             <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="logo-text">RENTayo • Admin</span>
+  <img src="../rentayo_logo.png" alt="RENTayo Admin" class="logo-img" />
       </a>
     </div>
     
