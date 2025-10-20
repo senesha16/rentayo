@@ -46,7 +46,7 @@ if ($is_admin === 1) {
         <style>
                 .navbar{background:#35418f;color:#FAF7F3;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,.1);position:sticky;top:0;z-index:1000}
                 .logo-link{color:#FAF7F3;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-                .logo-img{height:22px;width:auto;display:block}
+            .logo-img{height:28px;width:auto;display:block}
         .right{display:flex;gap:10px;align-items:center}
         .nav-link{color:#FAF7F3;text-decoration:none;padding:6px 10px;border-radius:8px}
         .nav-link:hover{background:rgba(250,247,243,.12)}

@@ -84,7 +84,7 @@ $on_dashboard = (basename($_SERVER['PHP_SELF']) === 'index.php');
   backdrop-filter: blur(10px);
 }
 
-.logo-img { height: 26px; width: auto; display:block; }
+.logo-img { height: 34px; width: auto; display:block; }
 
 .navbar-right {
   display: flex;
@@ -169,7 +169,7 @@ $on_dashboard = (basename($_SERVER['PHP_SELF']) === 'index.php');
     padding: 12px 16px;
   }
 
-  .logo-img { height: 22px; }
+  .logo-img { height: 28px; }
 
   .logo-icon {
     width: 32px;
