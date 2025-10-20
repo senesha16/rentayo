@@ -9,6 +9,8 @@ if (!isset($_SESSION["ID"])) {
     exit;
 }
 
+
+
 // Enable hamburger button for this page
 $showHamburger = true;
 
