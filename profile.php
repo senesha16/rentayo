@@ -136,7 +136,7 @@ $display_profile_url              = $user_data['profile_picture_url'] ? toWebUrl
 
 /* Stats */
 $stats = ['total_items' => 0, 'available_items' => 0, 'member_since' => 'Unknown'];
-if ($st = mysqli_prepare($connections, "SELECT COUNT(*) FROM Items WHERE lender_id = ?")) {
+if ($st = mysqli_prepare($connections, "SELECT COUNT(*) FROM items WHERE lender_id = ?")) {
   mysqli_stmt_bind_param($st, "i", $profile_user_id);
   mysqli_stmt_execute($st);
   $rs = mysqli_stmt_get_result($st);

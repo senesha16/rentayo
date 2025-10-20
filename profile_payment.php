@@ -42,12 +42,12 @@ try {
 
     // Load item price and verify lender + approved status
     // Also ensure Items.status exists (fallback approved)
-    $col = mysqli_query($connections, "SHOW COLUMNS FROM Items LIKE 'status'");
+  $col = mysqli_query($connections, "SHOW COLUMNS FROM items LIKE 'status'");
     if (!$col || mysqli_num_rows($col) === 0) {
-        mysqli_query($connections, "ALTER TABLE Items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'approved'");
+    mysqli_query($connections, "ALTER TABLE items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'approved'");
     }
 
-    $itRes = mysqli_query($connections, "SELECT price_per_day, lender_id, status FROM Items WHERE item_id = $item_id LIMIT 1");
+  $itRes = mysqli_query($connections, "SELECT price_per_day, lender_id, status FROM items WHERE item_id = $item_id LIMIT 1");
     $it    = $itRes ? mysqli_fetch_assoc($itRes) : null;
     if (!$it) {
         echo json_encode(['success' => false, 'message' => 'Item not found.']);
