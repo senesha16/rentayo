@@ -24,7 +24,7 @@ if ($other_user_id <= 0) {
 $sql = "
     SELECT 
         i.item_id, i.title
-    FROM Items i
+    FROM items i
     LEFT JOIN messages m ON m.item_id = i.item_id
     WHERE 
         i.status = 'approved'

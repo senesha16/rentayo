@@ -35,7 +35,7 @@ if ($repCntRes && ($rc = mysqli_fetch_assoc($repCntRes))) $pnd = (int)$rc['c'];
 
 // Count pending items
 $pendingItems = 0;
-$piRes = @mysqli_query($connections, "SELECT COUNT(*) AS c FROM Items WHERE status='pending'");
+$piRes = @mysqli_query($connections, "SELECT COUNT(*) AS c FROM items WHERE status='pending'");
 if ($piRes && ($pr = mysqli_fetch_assoc($piRes))) $pendingItems = (int)$pr['c'];
 
 // Additional stats
@@ -44,7 +44,7 @@ $userRes = @mysqli_query($connections, "SELECT COUNT(*) AS c FROM users");
 if ($userRes && ($ur = mysqli_fetch_assoc($userRes))) $totalUsers = (int)$ur['c'];
 
 $totalItems = 0;
-$itemRes = @mysqli_query($connections, "SELECT COUNT(*) AS c FROM Items");
+$itemRes = @mysqli_query($connections, "SELECT COUNT(*) AS c FROM items");
 if ($itemRes && ($ir = mysqli_fetch_assoc($itemRes))) $totalItems = (int)$ir['c'];
 
 $activeRentals = 0;
