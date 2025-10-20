@@ -25,10 +25,10 @@ $items_sql = "
         i.*,
         u.username,
         COALESCE(GROUP_CONCAT(DISTINCT c.name ORDER BY c.name SEPARATOR ', '), '') AS categories
-    FROM Items i
+    FROM items i
     INNER JOIN users u ON u.ID = i.lender_id AND u.is_banned = 0
-    LEFT JOIN ItemCategories ic ON ic.item_id = i.item_id
-    LEFT JOIN Categories c ON c.category_id = ic.category_id
+    LEFT JOIN itemcategories ic ON ic.item_id = i.item_id
+    LEFT JOIN categories c ON c.category_id = ic.category_id
     " . (count($where) ? "WHERE " . implode(" AND ", $where) : "") . "
     GROUP BY i.item_id
     ORDER BY i.item_id DESC

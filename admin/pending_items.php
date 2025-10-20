@@ -11,13 +11,13 @@ $row = $chk ? mysqli_fetch_assoc($chk) : null;
 if (!$row || (int)$row['is_admin'] !== 1) { header("Location: ../login.php"); exit; }
 
 // Ensure status column exists (safety)
-$col = mysqli_query($connections, "SHOW COLUMNS FROM Items LIKE 'status'");
+$col = mysqli_query($connections, "SHOW COLUMNS FROM items LIKE 'status'");
 if (!$col || mysqli_num_rows($col) === 0) {
-    mysqli_query($connections, "ALTER TABLE Items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending'");
+  mysqli_query($connections, "ALTER TABLE items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending'");
 }
-$col2 = mysqli_query($connections, "SHOW COLUMNS FROM Items LIKE 'reject_reason'");
+$col2 = mysqli_query($connections, "SHOW COLUMNS FROM items LIKE 'reject_reason'");
 if (!$col2 || mysqli_num_rows($col2) === 0) {
-    mysqli_query($connections, "ALTER TABLE Items ADD COLUMN `reject_reason` TEXT NULL");
+  mysqli_query($connections, "ALTER TABLE items ADD COLUMN `reject_reason` TEXT NULL");
 }
 
 // Actions
@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reason = trim($_POST['reason'] ?? '');
     if ($iid <= 0) { $err = 'Invalid item.'; }
     else if ($action === 'approve') {
-        $ok = mysqli_query($connections, "UPDATE Items SET status='approved', reject_reason=NULL WHERE item_id=$iid");
+  $ok = mysqli_query($connections, "UPDATE items SET status='approved', reject_reason=NULL WHERE item_id=$iid");
         $msg = $ok ? 'Item approved.' : 'Failed to approve.';
     } else if ($action === 'reject') {
         $esc = mysqli_real_escape_string($connections, $reason);
-        $ok = mysqli_query($connections, "UPDATE Items SET status='rejected', reject_reason='$esc' WHERE item_id=$iid");
+  $ok = mysqli_query($connections, "UPDATE items SET status='rejected', reject_reason='$esc' WHERE item_id=$iid");
         $msg = $ok ? 'Item rejected.' : 'Failed to reject.';
     } else {
         $err = 'Unknown action.';
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $q = "
 SELECT i.item_id, i.title, i.price_per_day, i.image_url, i.description, i.status,
        u.username, u.email, u.phone_number
-FROM Items i
+FROM items i
 JOIN users u ON u.ID = i.lender_id
 WHERE i.status = 'pending'
 ORDER BY i.item_id DESC";

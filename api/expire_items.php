@@ -16,7 +16,7 @@ function add_col_if_missing(mysqli $c, string $t, string $name, string $def): vo
 }
 
 // Ensure marker column to avoid duplicate notifications
-add_col_if_missing($connections, 'Items', 'expiry_notified', "TINYINT(1) NOT NULL DEFAULT 0");
+add_col_if_missing($connections, 'items', 'expiry_notified', "TINYINT(1) NOT NULL DEFAULT 0");
 
 @mysqli_query($connections, "CREATE TABLE IF NOT EXISTS `notifications` (
   `notification_id` INT NOT NULL AUTO_INCREMENT,
@@ -32,7 +32,7 @@ add_col_if_missing($connections, 'Items', 'expiry_notified', "TINYINT(1) NOT NUL
 // Find this lender’s items older than 30 days that we haven’t notified about
 $sql = "
   SELECT item_id, title, created_at
-  FROM Items
+  FROM items
   WHERE lender_id = $uid
     AND created_at < DATE_SUB(NOW(), INTERVAL 30 DAY)
     AND (expiry_notified IS NULL OR expiry_notified = 0)
@@ -59,7 +59,7 @@ foreach ($expired as $it) {
   $safeLink = mysqli_real_escape_string($connections, $link);
   @mysqli_query($connections, "INSERT INTO notifications (user_id, title, message, link, is_read)
                                VALUES ($uid, 'Listing expired', '$safeMsg', '$safeLink', 0)");
-  @mysqli_query($connections, "UPDATE Items SET expiry_notified = 1 WHERE item_id = ".(int)$it['item_id']." LIMIT 1");
+  @mysqli_query($connections, "UPDATE items SET expiry_notified = 1 WHERE item_id = ".(int)$it['item_id']." LIMIT 1");
   $count++;
 }
 

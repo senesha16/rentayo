@@ -49,14 +49,15 @@ function ensure_rental_payments(mysqli $conn) {
     }
 }
 function ensure_items_status(mysqli $conn) {
-    $col = mysqli_query($conn, "SHOW COLUMNS FROM Items LIKE 'status'");
+    $col = mysqli_query($conn, "SHOW COLUMNS FROM items LIKE 'status'");
     if (!$col || mysqli_num_rows($col) === 0) {
-        mysqli_query($conn, "ALTER TABLE Items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'approved'");
+        // Try to add the status column if missing (best-effort)
+        @mysqli_query($conn, "ALTER TABLE items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'approved'");
     }
 }
 function get_stock_column(mysqli $conn): ?string {
     foreach (['available_items_count','available_count','quantity','stock'] as $c) {
-        if (table_has_col($conn, 'Items', $c)) return $c;
+        if (table_has_col($conn, 'items', $c)) return $c;
     }
     return null;
 }
@@ -157,17 +158,18 @@ try {
 
     // Detect stock column
     $stockCol = get_stock_column($connections);
+    $hasStatus = table_has_col($connections, 'items', 'status');
 
     // Lock item row and verify status and stock
-    $selCols = "price_per_day, lender_id, status" . ($stockCol ? ", `$stockCol` AS stock" : "");
-    $itRes = mysqli_query($connections, "SELECT $selCols FROM Items WHERE item_id = $item_id FOR UPDATE");
+    $selCols = "price_per_day, lender_id" . ($hasStatus ? ", status" : "") . ($stockCol ? ", `$stockCol` AS stock" : "");
+    $itRes = mysqli_query($connections, "SELECT $selCols FROM items WHERE item_id = $item_id FOR UPDATE");
     $it = $itRes ? mysqli_fetch_assoc($itRes) : null;
 
     if (!$it) { mysqli_rollback($connections); echo json_encode(['success'=>false,'message'=>'Item not found.']); exit; }
     if ((int)$it['lender_id'] !== $lender_id) {
         mysqli_rollback($connections); echo json_encode(['success'=>false,'message'=>'Invalid item owner.']); exit;
     }
-    if ($it['status'] !== 'approved') {
+    if ($hasStatus && isset($it['status']) && $it['status'] !== 'approved') {
         mysqli_rollback($connections); echo json_encode(['success'=>false,'message'=>'This item is not available for renting yet.']); exit;
     }
 
@@ -180,7 +182,7 @@ try {
             echo json_encode(['success'=>false,'message'=>'This item is out of stock.']); exit;
         }
         // Decrement atomically
-        $updSql = "UPDATE Items SET `$stockCol` = `$stockCol` - 1 WHERE item_id = ? AND `$stockCol` > 0";
+    $updSql = "UPDATE items SET `$stockCol` = `$stockCol` - 1 WHERE item_id = ? AND `$stockCol` > 0";
         $upd = mysqli_prepare($connections, $updSql);
         mysqli_stmt_bind_param($upd, "i", $item_id);
         mysqli_stmt_execute($upd);

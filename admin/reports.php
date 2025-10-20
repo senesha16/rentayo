@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($iid > 0) {
                 // best-effort related deletes
                 mysqli_query($connections, "DELETE FROM item_images WHERE item_id=$iid");
-                mysqli_query($connections, "DELETE FROM ItemCategories WHERE item_id=$iid");
-                mysqli_query($connections, "DELETE FROM Items WHERE item_id=$iid");
+                mysqli_query($connections, "DELETE FROM itemcategories WHERE item_id=$iid");
+                mysqli_query($connections, "DELETE FROM items WHERE item_id=$iid");
             }
             mysqli_query($connections, "UPDATE reports SET status='resolved', action_taken='delete_item', admin_note='".mysqli_real_escape_string($connections,$admin_note)."', resolved_at=NOW() WHERE report_id=$report_id");
             $msg = "Item deleted.";
@@ -68,7 +68,7 @@ SELECT r.*,
        u1.username AS reported_username,
        u2.username AS reporter_username
 FROM reports r
-LEFT JOIN Items i ON i.item_id = r.item_id
+LEFT JOIN items i ON i.item_id = r.item_id
 LEFT JOIN users u1 ON u1.ID = r.reported_user_id
 LEFT JOIN users u2 ON u2.ID = r.reporter_id
 ORDER BY r.status='pending' DESC, r.created_at DESC

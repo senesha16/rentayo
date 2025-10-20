@@ -26,7 +26,7 @@ function pick_col(mysqli $c, string $t, array $cands): ?string {
 }
 function get_item_title(mysqli $c, int $item_id): ?string {
   if ($item_id <= 0) return null;
-  $q = mysqli_query($c, "SELECT title FROM Items WHERE item_id = $item_id LIMIT 1");
+  $q = mysqli_query($c, "SELECT title FROM items WHERE item_id = $item_id LIMIT 1");
   if ($q && ($r = mysqli_fetch_assoc($q))) return (string)$r['title'];
   return null;
 }
