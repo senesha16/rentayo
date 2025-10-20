@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- Logo & Brand -->
             <div>
                 <div class="mb-8">
-                    <img src="rentayo_logo.png" alt="RENTayo" class="h-16 w-auto drop-shadow" />
+                    <img src="rentayo_logo.png" alt="RENTayo" class="h-24 w-auto drop-shadow" />
                 </div>
                 
                 <div class="mb-6">
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="w-full max-w-md relative z-10">
             <!-- Mobile logo -->
             <div class="lg:hidden mb-8">
-                <img src="rentayo_logo.png" alt="RENTayo" class="h-12 w-auto" />
+                <img src="rentayo_logo.png" alt="RENTayo" class="h-16 w-auto" />
             </div>
 
             <!-- Form card -->
