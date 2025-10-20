@@ -3,6 +3,11 @@ session_start();
 require_once 'connections.php';
 require_once 'ban_guard.php'; // auto-logout if current user is banned
 
+// If DB connection is missing, avoid fatal errors and show a minimal message
+if (!isset($connections) || !$connections) {
+    error_log('index.php: No DB connection available.');
+}
+
 // Check if user is logged in
 if (!isset($_SESSION["ID"])) {
     header("Location: login.php");
@@ -14,8 +19,11 @@ if (!isset($_SESSION["ID"])) {
 // Enable hamburger button for this page
 $showHamburger = true;
 
-// re-enable categories query for sidebar
-$categories = mysqli_query($connections, "SELECT * FROM Categories");
+// Categories query (case-sensitive table names on Linux)
+$categories = mysqli_query($connections, "SELECT * FROM categories");
+if ($categories === false) {
+    error_log('SQL error (categories): ' . mysqli_error($connections));
+}
 
 // If category filter, search, or lender filter is selected
 $categoryFilter = isset($_GET['category']) ? (int)$_GET['category'] : 0;
@@ -25,7 +33,7 @@ $categoryName   = null;
 $lenderName     = null;
 
 if ($categoryFilter) {
-    $categoryQuery = "SELECT name FROM Categories WHERE category_id = " . (int)$categoryFilter;
+    $categoryQuery = "SELECT name FROM categories WHERE category_id = " . (int)$categoryFilter;
     $categoryResult = mysqli_query($connections, $categoryQuery);
     if ($categoryResult && mysqli_num_rows($categoryResult) > 0) {
         $categoryRow = mysqli_fetch_assoc($categoryResult);
@@ -42,14 +50,13 @@ if ($lenderFilter) {
     }
 }
 
-// Ensure Items.status exists (default approved so existing items still show)
-$col = mysqli_query($connections, "SHOW COLUMNS FROM Items LIKE 'status'");
-if (!$col || mysqli_num_rows($col) === 0) {
-    mysqli_query($connections, "ALTER TABLE Items ADD COLUMN `status` ENUM('pending','approved','rejected') NOT NULL DEFAULT 'approved'");
+// Build items query (apply filters). Guard optional columns for portability
+$where = [];
+// Only filter by status if column exists
+$col = mysqli_query($connections, "SHOW COLUMNS FROM items LIKE 'status'");
+if ($col && mysqli_num_rows($col) > 0) {
+    $where[] = "i.status = 'approved'";
 }
-
-// Build items query (hide banned lenders, only approved items, apply filters)
-$where = ["i.status = 'approved'"]; // base condition
 
 if ($categoryFilter) {
     // filter by category via join table
@@ -74,15 +81,18 @@ $items_sql = "
         i.*,
         u.username,
         COALESCE(GROUP_CONCAT(DISTINCT c.name ORDER BY c.name SEPARATOR ', '), '') AS categories
-    FROM Items i
-    INNER JOIN users u ON u.ID = i.lender_id AND u.is_banned = 0
-    LEFT JOIN ItemCategories ic ON ic.item_id = i.item_id
-    LEFT JOIN Categories c ON c.category_id = ic.category_id
+    FROM items i
+    INNER JOIN users u ON u.ID = i.lender_id
+    LEFT JOIN itemcategories ic ON ic.item_id = i.item_id
+    LEFT JOIN categories c ON c.category_id = ic.category_id
     " . (count($where) ? "WHERE " . implode(" AND ", $where) : "") . "
     GROUP BY i.item_id
     ORDER BY i.item_id DESC
 ";
 $items_res = mysqli_query($connections, $items_sql);
+if ($items_res === false) {
+    error_log('SQL error (items list): ' . mysqli_error($connections));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
