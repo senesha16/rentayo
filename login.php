@@ -211,14 +211,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="relative z-10 flex flex-col justify-between w-full max-w-xl mx-auto">
             <!-- Logo & Brand -->
             <div>
-                <div class="flex items-center gap-3 mb-8 group">
-                    <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30 shadow-lg group-hover:scale-110 transition-transform">
-                        <i data-lucide="package" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <div>
-                        <span class="text-white font-medium tracking-tight block text-xl">RENTayo</span>
-                        <span class="text-sky-100 text-xs">Student Rentals</span>
-                    </div>
+                <div class="mb-8">
+                    <img src="rentayo_logo.png" alt="RENTayo" class="h-16 w-auto drop-shadow" />
                 </div>
                 
                 <div class="mb-6">
@@ -285,14 +279,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="w-full max-w-md relative z-10">
             <!-- Mobile logo -->
-            <div class="lg:hidden flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 bg-gradient-to-br from-sky-500 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <i data-lucide="package" class="w-5 h-5 text-white"></i>
-                </div>
-                <div>
-                    <span class="text-gray-900 font-medium tracking-tight block">RENTayo</span>
-                    <span class="text-sky-600 text-xs">Student Rentals</span>
-                </div>
+            <div class="lg:hidden mb-8">
+                <img src="rentayo_logo.png" alt="RENTayo" class="h-12 w-auto" />
             </div>
 
             <!-- Form card -->
