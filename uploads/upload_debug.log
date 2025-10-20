@@ -1,0 +1,1212 @@
+[2025-09-21 11:58:09] Upload attempt:
+_FILES: Array
+(
+    [item_image] => Array
+        (
+            [name] => Screenshot 2025-09-18 101456.png
+            [full_path] => Screenshot 2025-09-18 101456.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php635B.tmp
+            [error] => 0
+            [size] => 106168
+        )
+
+)
+
+imageErr: <none>
+image_path: uploads/items/item_68cfcc3142665.png
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 15:02:07] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/png
+                    [1] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php40B2.tmp
+                    [1] => C:\xampp\tmp\php40C2.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 5746469
+                    [1] => 39732
+                )
+
+        )
+
+)
+
+imageErr: Image 1: Image size should be less than 5MB.
+image_path: <none>
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 15:06:35] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/png
+                    [1] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php569A.tmp
+                    [1] => C:\xampp\tmp\php56AA.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 5746469
+                    [1] => 39732
+                )
+
+        )
+
+)
+
+imageErr: Image 1: Image size should be less than 5MB.
+image_path: <none>
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 15:07:21] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/png
+                    [1] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpB07.tmp
+                    [1] => C:\xampp\tmp\phpB37.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 5746469
+                    [1] => 39732
+                )
+
+        )
+
+)
+
+imageErr: Image 1: Image size should be less than 5MB.
+image_path: <none>
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 15:19:33] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => NU LIPA MAGAZINE.png
+                    [1] => sample.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/png
+                    [1] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php35AE.tmp
+                    [1] => C:\xampp\tmp\php35CE.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 5746469
+                    [1] => 39732
+                )
+
+        )
+
+)
+
+imageErr: Image 1: Image size should be less than 5MB.
+image_paths: <none>
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 15:19:45] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => sample.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => sample.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php655B.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 39732
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68d5417140e9e.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 17:21:58] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 80aa7f7f-f7b4-46ec-94ec-f278904f1d3f.jpg
+                    [1] => 435786654_25525706837043077_4856721357885715610_n.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 80aa7f7f-f7b4-46ec-94ec-f278904f1d3f.jpg
+                    [1] => 435786654_25525706837043077_4856721357885715610_n.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                    [1] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php4BFC.tmp
+                    [1] => C:\xampp\tmp\php4BFD.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 132458
+                    [1] => 56232
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68d55e16c70b9.jpg, uploads/items/item_68d55e16c750a.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 17:51:13] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 0cace5aa87b7dd1229eeb31320c09d4c.jpg
+                    [1] => 723f59900371e9763d89cd4c17c1bb4c.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 0cace5aa87b7dd1229eeb31320c09d4c.jpg
+                    [1] => 723f59900371e9763d89cd4c17c1bb4c.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                    [1] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php11A1.tmp
+                    [1] => C:\xampp\tmp\php11A2.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 15514
+                    [1] => 12107
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68d564f153b66.jpg, uploads/items/item_68d564f153f2a.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-09-25 17:56:17] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 0cace5aa87b7dd1229eeb31320c09d4c.jpg
+                    [1] => 723f59900371e9763d89cd4c17c1bb4c.jpg
+                    [2] => 9867c2c323334b2a12016a2908e298aa.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 0cace5aa87b7dd1229eeb31320c09d4c.jpg
+                    [1] => 723f59900371e9763d89cd4c17c1bb4c.jpg
+                    [2] => 9867c2c323334b2a12016a2908e298aa.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                    [1] => image/jpeg
+                    [2] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpB62C.tmp
+                    [1] => C:\xampp\tmp\phpB62D.tmp
+                    [2] => C:\xampp\tmp\phpB62E.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                    [2] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 15514
+                    [1] => 12107
+                    [2] => 49088
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68d566219574c.jpg, uploads/items/item_68d5662195a08.jpg, uploads/items/item_68d56621962a9.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-03 11:10:20] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpBDEB.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4049
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68df92fcc8370.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-03 12:01:25] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => IMG20210912145001.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => IMG20210912145001.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php8081.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 549642
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68df9ef546d7d.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-05 22:33:13] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => IMG20210912145001.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => IMG20210912145001.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpA354.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 549642
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68e2d609e774a.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-05 23:38:51] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (9).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (9).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpB9AB.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4631
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: database/uploads/items/item_68e2e56bc5ffe.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-05 23:39:49] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php9BDF.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4049
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: database/uploads/items/item_68e2e5a5aff53.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-06 00:03:21] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php2696.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4049
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68e2eb2979c7a.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-06 00:03:45] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (9).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (9).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php84F3.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4631
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68e2eb4199c7b.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 00:38:07] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => IMG20210912145001.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => IMG20210912145001.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php313.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 549642
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f173cf22db0.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 02:51:52] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => il_570xN.1908738675_3vmn.webp
+                )
+
+            [full_path] => Array
+                (
+                    [0] => il_570xN.1908738675_3vmn.webp
+                )
+
+            [type] => Array
+                (
+                    [0] => image/webp
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php778E.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 15342
+                )
+
+        )
+
+)
+
+imageErr: Image 1: Only JPG, JPEG, PNG & GIF files are allowed.
+image_paths: <none>
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 02:52:00] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => il_570xN.1908738675_3vmn.webp
+                )
+
+            [full_path] => Array
+                (
+                    [0] => il_570xN.1908738675_3vmn.webp
+                )
+
+            [type] => Array
+                (
+                    [0] => image/webp
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php98C3.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 15342
+                )
+
+        )
+
+)
+
+imageErr: Image 1: Only JPG, JPEG, PNG & GIF files are allowed.
+image_paths: <none>
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 02:52:24] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (9).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (9).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpF413.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4631
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f193482d003.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 03:05:26] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => b3e0cf82-dab6-4446-8b33-6c260c5761c4.jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => b3e0cf82-dab6-4446-8b33-6c260c5761c4.jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpE567.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 144395
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f19656d5b45.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 03:06:01] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 550798408_1518025759201442_3333933117028178941_n.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 550798408_1518025759201442_3333933117028178941_n.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php6E2F.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 612217
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f19679d44bb.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 04:27:39] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => IMG_5974.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => IMG_5974.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php2AD2.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 22335
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f1a99bcb7f3.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 08:38:57] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => ca4ad231-6376-4fac-8b47-1c9d1c789fae.jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => ca4ad231-6376-4fac-8b47-1c9d1c789fae.jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php3A59.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 50891
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f1e4811797c.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 08:43:06] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => ca4ad231-6376-4fac-8b47-1c9d1c789fae.jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => ca4ad231-6376-4fac-8b47-1c9d1c789fae.jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php7BD.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 50891
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f1e57a44a61.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 08:44:51] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => 550798408_1518025759201442_3333933117028178941_n.jpg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => 550798408_1518025759201442_3333933117028178941_n.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\phpA467.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 612217
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f1e5e3e2061.jpg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+
+[2025-10-17 08:52:29] Upload attempt:
+_FILES: Array
+(
+    [item_images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [full_path] => Array
+                (
+                    [0] => download (11).jpeg
+                )
+
+            [type] => Array
+                (
+                    [0] => image/jpeg
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => C:\xampp\tmp\php9DFD.tmp
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 4049
+                )
+
+        )
+
+)
+
+imageErr: <none>
+image_paths: uploads/items/item_68f1e7ad03114.jpeg
+upload_max_filesize=40M, post_max_size=40M, max_file_uploads=20
+is_writable(upload dir)=yes
+

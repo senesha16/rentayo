@@ -1,0 +1,35 @@
+.item-owner-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.item-wrapper:hover .item-owner-actions {
+    opacity: 1;
+}
+
+.edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: #35418f;
+    color: #FAF7F3;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+    background: #FAF7F3;
+    color: #35418f;
+}
+
+.edit-btn svg {
+    width: 10px;
+    height: 10px;
+}
